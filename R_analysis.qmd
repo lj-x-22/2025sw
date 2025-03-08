@@ -1,0 +1,46 @@
+---
+title: "p1"
+format: html
+editor: visual
+---
+
+```{r}
+library(ggplot2)
+
+p <- read.csv("/Users/lauraxia/p2.csv")
+
+# Combine 
+combined_plot <- ggplot(p, aes(x = Timestamp)) + 
+  geom_line(aes(y = `Channel2`, color = "Channel 2", group = 1)) + 
+  labs(x = "Time (sec)", y = "Amplitude (uV)", title = "Amplitude of Channel 2") +
+  scale_color_manual(values = c("Channel 2" = "darkblue")) +
+  theme(axis.text.x = element_blank()) + 
+  geom_vline(xintercept = 39, color = "skyblue", linetype = "dashed") + 
+  geom_vline(xintercept = 44.5, color = "skyblue", linetype = "dashed") + 
+  geom_vline(xintercept = 49.5, color = "skyblue", linetype = "dashed") + 
+  annotate("text", x = 28, y = 50000, label = "P300", color = "skyblue", angle = 0, vjust = 1) +
+  ylim(35000, 110000) 
+
+# Show
+print(combined_plot)
+```
+
+```{r}
+library(ggplot2)
+
+p1 <- read.csv("/Users/lauraxia/p4.csv")  
+p1$Dataset <- "Tense Stimuli"  
+
+p2 <- read.csv("/Users/lauraxia/p3.csv")
+p2$Dataset <- "Calm Stimuli"  
+
+combined_data <- rbind(p1, p2)
+
+ggplot(combined_data, aes(x = Timestamp, y = `Channel3`, group = Dataset, color = Dataset)) +
+  geom_line() + 
+  labs(x = "Time (sec)", y = "Amplitude (uV)", title = "Amplitude of Channel 3") +
+  scale_color_manual(values = c("Calm Stimuli" = "darkblue", "Tense Stimuli" = "darkred")) +
+  theme(axis.text.x = element_blank()) + 
+  ylim(60000, 120000) + 
+  geom_vline(xintercept = 80.5, color = "skyblue", linetype = "dashed")
+```
