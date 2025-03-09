@@ -4,7 +4,7 @@ Two parts of SW project:
 
 1. The app
 - Using Android Studio and Java
-- Code could be accessed here: https://drive.google.com/file/d/1XQ7TAfR0O0w1hllbCkeNz_EE--P9pl5V/view?usp=sharing 
+- Code could be accessed here: https://drive.google.com/file/d/1XQ7TAfR0O0w1hllbCkeNz_EE--P9pl5V/view?usp=sharing
 
 2. EEG data analysis
 - Using R and R Studio
